@@ -20,17 +20,16 @@ import lombok.Setter;
 @Entity 
 public class schedule {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
 	@Column(length = 20)
 	private String title;
 	
     @Column(columnDefinition = "TEXT")
-    private String data;
-    
+    private String time;	// 시간
+    	
     @Column(columnDefinition = "TEXT")
-    private String date;
+    private String date;	// 년 월 일
 
     @ManyToOne
     private Account account;
@@ -38,8 +37,10 @@ public class schedule {
 	public void patch(schedule schedule) {
 		if(schedule.title!=null)
 			this.title = schedule.title;
-		if(schedule.data!=null)
-			this.data = schedule.data;
+		if(schedule.time!=null)
+			this.time = schedule.time;
+		if(schedule.date!=null)
+			this.date = schedule.date;
 	}
 	
 }
